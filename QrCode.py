@@ -1,4 +1,5 @@
 import qrcode
+from PIL import Image
 
 # L'URL ou le texte que tu veux encoder dans le QR code
 data = "https://pervenchebeorou.github.io/infomegajeune/"  # Remplace par l'URL ou le texte
