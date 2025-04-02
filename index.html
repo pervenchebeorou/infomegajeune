@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiches de l'Activité</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+</head>
+<body>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/logomegajeune.jpg" alt="Affiche 1" onclick="openFullscreen(this)"></div>
+            <div class="swiper-slide"><img src="images/affichemegajeune.jpg" alt="Affiche 2" onclick="openFullscreen(this)"></div>
+            <div class="swiper-slide"><img src="images/programme.jpg" alt="Affiche 3" onclick="openFullscreen(this)"></div>
+            <div class="swiper-slide"><img src="images/atelier.jpg" alt="Affiche 4" onclick="openFullscreen(this)"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <button class="close-btn" onclick="closeFullscreen()">×</button>
+        <img id="fullscreenImage" src="" alt="Plein écran">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
