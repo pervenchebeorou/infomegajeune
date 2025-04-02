@@ -1,5 +1,5 @@
 import qrcode
-from PIL import Image
+from PIL import Image  # Assurez-vous d'importer Image de la bibliothèque PIL
 
 # L'URL ou le texte que tu veux encoder dans le QR code
 data = "https://pervenchebeorou.github.io/infomegajeune/"  # Remplace par l'URL ou le texte
@@ -18,7 +18,6 @@ qr.make(fit=True)
 
 # Créer une image du QR code
 img = qr.make_image(fill='black', back_color='white')
-
 
 # Ouvrir le logo
 logo = Image.open("images/logomegajeune.jpg")  # Remplace par le chemin de ton logo
