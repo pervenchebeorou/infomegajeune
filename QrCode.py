@@ -18,5 +18,23 @@ qr.make(fit=True)
 # Créer une image du QR code
 img = qr.make_image(fill='black', back_color='white')
 
-# Sauvegarder l'image générée
-img.save("qrcode.png")
+
+# Ouvrir le logo
+logo = Image.open("images/logomegajeune.jpg")  # Remplace par le chemin de ton logo
+
+# Calculer la taille du logo (il doit être plus petit que le QR code)
+qr_width, qr_height = img.size
+logo_size = int(qr_width / 5)  # Le logo sera 1/5 de la taille du QR code
+logo = logo.resize((logo_size, logo_size))
+
+# Calculer la position du logo au centre du QR code
+logo_position = ((qr_width - logo_size) // 2, (qr_height - logo_size) // 2)
+
+# Ajouter le logo au QR code
+img.paste(logo, logo_position, mask=logo)
+
+# Sauvegarder l'image générée avec le logo au centre
+img.save("qrcode_with_logo.png")
+
+# Optionnellement, afficher l'image
+img.show()
