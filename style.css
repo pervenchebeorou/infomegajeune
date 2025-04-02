@@ -19,7 +19,8 @@ body {
 
 /* Styles des boutons de navigation */
 .swiper-button-next, .swiper-button-prev {
-    color: #fff;S
+    color: #fff;
+    background-color: rgba(58, 53, 53, 0.5);
     padding: 10px;
     border-radius: 50%;
 }
