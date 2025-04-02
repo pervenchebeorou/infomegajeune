@@ -6,7 +6,7 @@ body {
     height: 100vh;
     background-color: #f4f4f4;
     margin: 0;
-    overflow: hidden;
+    overflow: hidden; /* Empêche le défilement */
 }
 .swiper {
     width: 80%;
@@ -35,6 +35,8 @@ body {
     max-height: 100%;
     object-fit: contain;
 }
+
+/* Bouton de fermeture */
 .close-btn {
     position: absolute;
     top: 10px;
