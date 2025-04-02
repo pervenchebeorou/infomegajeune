@@ -1,43 +1,48 @@
 import qrcode
 from PIL import Image
 
-# L'URL ou le texte que tu veux encoder dans le QR code
-data = "https://pervenchebeorou.github.io/infomegajeune/"  # Remplace par l'URL ou le texte
+def generate_qr_with_logo():
+    # Configuration
+    url = "https://pervenchebeorou.github.io/infomegajeune/"
+    logo_path = "images/logomegajeune.jpg"  # Chemin relatif depuis l'endroit où vous exécutez le script
+    output_path = "qr_megajeune.png"       # Fichier de sortie
+    
+    # Création du QR code
+    qr = qrcode.QRCode(
+        version=5,  # Ajuste automatiquement si nécessaire (1-40)
+        error_correction=qrcode.constants.ERROR_CORRECT_H,  # Haute tolérance aux erreurs
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(url)
+    qr.make(fit=True)
+    
+    # Génération de l'image QR
+    qr_img = qr.make_image(fill_color="#1a237e", back_color="white").convert('RGB')  # Bleu foncé
+    
+    # Traitement du logo
+    logo = Image.open(logo_path)
+    
+    # Redimensionnement (25% de la taille du QR code)
+    logo_size = min(qr_img.size) // 4
+    logo = logo.resize((logo_size, logo_size), Image.Resampling.LANCZOS)
+    
+    # Positionnement au centre
+    position = (
+        (qr_img.size[0] - logo.size[0]) // 2,
+        (qr_img.size[1] - logo.size[1]) // 2
+    )
+    
+    # Collage du logo (avec gestion de la transparence si nécessaire)
+    if logo.mode == 'RGBA':
+        mask = logo.split()[3]  # Utilise le canal alpha comme masque
+        qr_img.paste(logo, position, mask)
+    else:
+        qr_img.paste(logo, position)
+    
+    # Sauvegarde
+    qr_img.save(output_path)
+    print(f"✅ QR code généré avec succès : {output_path}")
 
-# Créer un objet QRCode
-qr = qrcode.QRCode(
-    version=1,  # Version de QR code (1 est le plus petit)
-    error_correction=qrcode.constants.ERROR_CORRECT_L,  # Niveau de correction d'erreur
-    box_size=10,  # Taille des "cases" du QR code
-    border=4,  # Taille du bord du QR code
-)
-
-# Ajouter les données au QR code
-qr.add_data(data)
-qr.make(fit=True)
-
-# Créer une image du QR code
-img = qr.make_image(fill='black', back_color='white')
-
-# Ouvrir le logo (format JPG)
-logo = Image.open("images/logomegajeune.jpg")  # Remplace par le chemin de ton logo
-
-# Convertir le logo en mode RGB (si ce n'est pas déjà fait)
-logo = logo.convert("RGB")
-
-# Calculer la taille du logo (il doit être plus petit que le QR code)
-qr_width, qr_height = img.size
-logo_size = int(qr_width / 5)  # Le logo sera 1/5 de la taille du QR code
-logo = logo.resize((logo_size, logo_size))
-
-# Calculer la position du logo au centre du QR code
-logo_position = ((qr_width - logo_size) // 2, (qr_height - logo_size) // 2)
-
-# Ajouter le logo au QR code (sans masque)
-img.paste(logo, logo_position)
-
-# Sauvegarder l'image générée avec le logo au centre
-img.save("qrcode_with_logo.png")
-
-# Optionnellement, afficher l'image
-img.show()
+# Exécution
+generate_qr_with_logo()
