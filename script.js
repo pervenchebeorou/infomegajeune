@@ -9,18 +9,3 @@ const swiper = new Swiper('.swiper', {
         prevEl: '.swiper-button-prev'  // Bouton précédent
     }
 });
-
-
-// Fonction pour ouvrir l'image en plein écran
-function openFullscreen(img) {
-    const overlay = document.getElementById('fullscreenOverlay');
-    const fullscreenImage = document.getElementById('fullscreenImage');
-    
-    fullscreenImage.src = img.src; // Affiche l'image sélectionnée
-    overlay.style.display = 'flex'; // Affiche l'overlay
-}
-
-// Fonction pour fermer l'overlay
-function closeFullscreen() {
-    document.getElementById('fullscreenOverlay').style.display = 'none';
-}

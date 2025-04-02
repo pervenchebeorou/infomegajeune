@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Affiches de l'Activité</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css"> <!-- Lien vers le fichier CSS -->
 </head>
 <body>
     <div class="swiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/logomegajeune.jpg" alt="Affiche 1" onclick="openFullscreen(this)"></div>
-            <div class="swiper-slide"><img src="images/affichemegajeune.jpg" alt="Affiche 2" onclick="openFullscreen(this)"></div>
-            <div class="swiper-slide"><img src="images/programme.jpg" alt="Affiche 3" onclick="openFullscreen(this)"></div>
-            <div class="swiper-slide"><img src="images/atelier.jpg" alt="Affiche 4" onclick="openFullscreen(this)"></div>
+            <div class="swiper-slide">
+                <img src="logomegajeune.jpg" alt="Affiche 1">
+            </div>
+            <div class="swiper-slide">
+                <img src="affichemegajeune.jpg" alt="Affiche 2">
+            </div>
+            <div class="swiper-slide">
+                <img src="programme.jpg" alt="Affiche 3">
+            </div>
+            <div class="swiper-slide">
+                <img src="atelier.jpg" alt="Affiche 4">
+            </div>
         </div>
+
+        <!-- Pagination -->
         <div class="swiper-pagination"></div>
+
+        <!-- Boutons de navigation -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
 
-    <div class="fullscreen-overlay" id="fullscreenOverlay">
-        <button class="close-btn" onclick="closeFullscreen()">×</button>
-        <img id="fullscreenImage" src="" alt="Plein écran">
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="script.js"></script> <!-- Lien vers le fichier JS -->
 </body>
 </html>
